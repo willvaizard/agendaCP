@@ -1,7 +1,5 @@
 package persistence;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,24 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-
 import entity.Agenda;
 
 public class AgendaDAO implements iAgendaDAO{
 	Connection con;
-	
-	private void iAgendaDAO()throws SQLException {
-		con = JDBCUtil.getConnection();
+	public AgendaDAO() throws SQLException {
+	con = JDBCUtil.getConnection();
 	}
+
 	@Override
 	public List<Agenda> ConsultaTodos() throws SQLException {
-			
+		
 		List<Agenda> listaContatos = new ArrayList<Agenda>();
-		String sql = "SELECT id_contato, nome, tel_comercial, cel from agenda";
+		String sql = "SELECT * from agenda";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
@@ -51,7 +44,7 @@ public class AgendaDAO implements iAgendaDAO{
 	}
 
 	@Override
-	public List<Agenda> ConsultaPorNome(String texto) throws SQLException {
+public List<Agenda> ConsultaPorNome(String texto) throws SQLException {
 	
 		
 		List<Agenda> listaContatos = new ArrayList<Agenda>();
@@ -80,6 +73,8 @@ public class AgendaDAO implements iAgendaDAO{
 		return listaContatos;
 		}
 
+
 	
 	
+
 }

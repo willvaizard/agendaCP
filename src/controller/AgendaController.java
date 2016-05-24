@@ -12,25 +12,32 @@ public class AgendaController  {
 	
 	public void ConsultaTodos (){
 		
-		AgendaDAO aDao = new AgendaDAO();
-		
 		try {
-			List<Agenda> lista =aDao.ConsultaTodos();
+			AgendaDAO aDao = new AgendaDAO();
+			List<Agenda> lista = aDao.ConsultaTodos();
 			
-			
+			for (Agenda ag:  lista){
+				
+				System.out.println(ag.getId()+ " - " + ag.getNomeEmpresa());
+				
+				
+				
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
+		
 	}
 
 	public void ConsultaPorNome(String text) {
 		
-		AgendaDAO aDao = new AgendaDAO();
+		
 		
 		try {
+			AgendaDAO aDao = new AgendaDAO();
 			List<Agenda> lista =aDao.ConsultaPorNome(text);
 			for(Agenda ag: lista){
 				

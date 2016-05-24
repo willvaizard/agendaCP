@@ -144,7 +144,7 @@ if(e.getSource() == btnPesquisar){
 	
 	
 	
-	//control.ConsultaPorNome(txtPesquisar.getText());
+	control.ConsultaPorNome(txtPesquisar.getText());
 }
 	
 }

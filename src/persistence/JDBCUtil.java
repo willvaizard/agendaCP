@@ -16,7 +16,7 @@ public class JDBCUtil {
 	
 	private static String JDBC_URL = "jdbc:mysql://localhost/agenda";
 	private static String JDBC_USER = "root";
-	private static String JDBC_PASSWORD = "rainbow";
+	private static String JDBC_PASSWORD = "ads2016";
 
 	
 	
