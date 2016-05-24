@@ -123,6 +123,61 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 		return listaContatos;
 		}
 
+	@Override
+	public Agenda ConsultaPorID(int id) throws SQLException {
+		
+		
+		String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencial, cidade_res, "
+				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial, cidade_comercial, cep_comercial,"
+				+ " + cep_comercial2, site_comercial, tel_comercial, fax_comercial,  empresa, cargo, "
+				+ "departamento, end_comercial2, obs, id_contato from agenda where id_contato = ? ";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, id);
+		
+		ResultSet rs = ps.executeQuery();
+
+		Agenda contato = new Agenda();
+		
+		if (rs.next()) {
+
+			
+			contato.setNomeEmpresa(rs.getString("nome"));
+			contato.setNomeEmpresaContato(rs.getString("nomeEmpCont"));
+			contato.setMail(rs.getString("mail"));
+			contato.setResidencial(rs.getString("residencial"));
+			contato.setCidade_res(rs.getString("cidade_res"));
+			contato.setCep_res(rs.getString("cep_res"));
+			contato.setUf(rs.getString("uf"));
+			contato.setTel_res(rs.getString("tel_res"));
+			contato.setFax_res(rs.getString("fax_res"));
+			contato.setCel(rs.getString("cel"));
+			contato.setSite(rs.getString("site"));
+			contato.setEnd_comercial(rs.getString("end_comercial"));
+			contato.setCidade_comercial("cidade_comercial");
+			contato.setCep_comercial(rs.getString("cep_comercial"));
+			contato.setCep_comercial2(rs.getString("cep_comercial2"));
+			contato.setSite_comercial(rs.getString("site_comercial"));
+			contato.setTel_comercial(rs.getString("tel_comercial"));
+			contato.setFax_comercial(rs.getString("fax_comercial"));
+			contato.setCargo(rs.getString("cargo"));
+			contato.setDepartamento(rs.getString("departamento"));
+			contato.setEnd_comercial2(rs.getString("end_comercial2"));
+			contato.setObs(rs.getString("obs"));
+			contato.setId(rs.getInt("id_contato"));
+			
+				
+
+			
+
+		}
+		rs.close();
+		ps.close();
+
+		return contato;
+		
+	}
+
 
 	
 	

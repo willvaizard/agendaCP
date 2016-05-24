@@ -114,5 +114,24 @@ public class AgendaController  {
 
 	}
 	
+	public Agenda VisualizaContato (int id){
+		Agenda contato = new Agenda();
+		try {
+			
+			AgendaDAO aDao = new AgendaDAO();
+			 contato = aDao.ConsultaPorID(id);
+			System.out.println(contato.getTel_comercial());
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return contato;
+	}
+	
+	
 
 }

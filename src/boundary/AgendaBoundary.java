@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.SQLException;
 
 import javax.swing.Action;
@@ -25,9 +27,11 @@ import javax.swing.border.Border;
 import javax.swing.plaf.metal.MetalBorders.TableHeaderBorder;
 import javax.swing.table.DefaultTableModel;
 
+import com.sun.javafx.fxml.BeanAdapter;
+
 import controller.AgendaController;
 
-public class AgendaBoundary implements ActionListener{
+public class AgendaBoundary implements ActionListener, MouseListener{
 	private AgendaController control;
 	private JFrame janela = new JFrame("Consulta de Contatos - Camera Press");
 	private JPanel panelPrincipal = new JPanel(new BorderLayout());
@@ -35,6 +39,7 @@ public class AgendaBoundary implements ActionListener{
 	private JTextField txtPesquisar;
 	private JButton btnVisualizar;
 	private JButton btnPesquisar;
+	private int id;
 		
 		public AgendaBoundary() {
 			//JLabel logo = new JLabel();
@@ -58,6 +63,7 @@ public class AgendaBoundary implements ActionListener{
 			panelPrincipal.add(rodape(), BorderLayout.SOUTH);
 			
 			janela.setVisible(true);
+			janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
 			janela.setSize(900, 600);
 			janela.setContentPane(panelPrincipal);
 			janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,6 +118,8 @@ public class AgendaBoundary implements ActionListener{
 			tabelaContatos.revalidate();
 			tabelaContatos.setBorder(null);
 			tabelaContatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			tabelaContatos.addMouseListener(this);
+			
 			
 			
 			
@@ -147,6 +155,7 @@ public class AgendaBoundary implements ActionListener{
 			btnVisualizar = new JButton("Visualizar contato");
 			panelRodape.add(btnVisualizar);
 			btnVisualizar.setEnabled(false);
+			btnVisualizar.addActionListener(this);
 					
 			
 			return panelRodape;
@@ -168,7 +177,46 @@ if(e.getSource() == btnPesquisar || e.getSource() == txtPesquisar){
 	
 	
 	control.ConsultaNome(txtPesquisar.getText());
+}else if (e.getSource() == btnVisualizar){
+	ContatoDados cDados = new ContatoDados(control.VisualizaContato(id));
+	
 }
+	
+}
+
+@Override
+public void mouseClicked(MouseEvent arg0) {
+	if (arg0.getSource() == tabelaContatos) {
+
+		int linha = tabelaContatos.getSelectedRow();
+		btnVisualizar.setEnabled(true);
+		 id = (int) tabelaContatos.getValueAt(linha, 0); 
+		
+	}
+	
+}
+
+@Override
+public void mouseEntered(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseExited(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mousePressed(MouseEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void mouseReleased(MouseEvent arg0) {
+	// TODO Auto-generated method stub
 	
 }
 }
