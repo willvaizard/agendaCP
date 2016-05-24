@@ -9,14 +9,14 @@ public class JDBCUtil {
 
 	private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	
-	//private static String JDBC_URL = "jdbc:jtds:sqlserver://192.168.0.10:1433/agenda";
-	//private static String JDBC_USER = "agenda";
-	//private static String JDBC_PASSWORD = "agenda";
+	private static String JDBC_URL = "jdbc:jtds:sqlserver://192.168.0.10:1433/agenda";
+	private static String JDBC_USER = "agenda";
+	private static String JDBC_PASSWORD = "recepcao";
 	
 	
-	private static String JDBC_URL = "jdbc:mysql://localhost/agenda";
-	private static String JDBC_USER = "root";
-	private static String JDBC_PASSWORD = "ads2016";
+	//private static String JDBC_URL = "jdbc:mysql://localhost/agenda";
+//	private static String JDBC_USER = "root";
+	//private static String JDBC_PASSWORD = "ads2016";
 
 	
 	

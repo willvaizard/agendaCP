@@ -3,6 +3,8 @@ package entity;
 public class Agenda {
 	private int id;
 	private String nomeEmpresa;
+	private String nomeEmpresaContato;
+	
 	private String mail;
 	private String residencial;
 	private String cidade_res;
@@ -34,11 +36,19 @@ public class Agenda {
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNomeEmpresa() {
 		return nomeEmpresa;
 	}
 	public void setNomeEmpresa(String nomeEmpresa) {
 		this.nomeEmpresa = nomeEmpresa;
+	}
+
+	public String getNomeEmpresaContato() {
+		return nomeEmpresaContato;
+	}
+	public void setNomeEmpresaContato(String nomeEmpresaContato) {
+		this.nomeEmpresaContato = nomeEmpresaContato;
 	}
 	public String getMail() {
 		return mail;

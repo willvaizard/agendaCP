@@ -28,13 +28,13 @@ import javax.swing.table.DefaultTableModel;
 import controller.AgendaController;
 
 public class AgendaBoundary implements ActionListener{
-	AgendaController control;
-	JFrame janela = new JFrame("Consulta de Contatos - Camera Press");
-	JPanel panelPrincipal = new JPanel(new BorderLayout());
-	JTable tabelaContatos = new JTable();
-	JTextField txtPesquisar;
-	JButton btnVisualizar;
-	JButton btnPesquisar;
+	private AgendaController control;
+	private JFrame janela = new JFrame("Consulta de Contatos - Camera Press");
+	private JPanel panelPrincipal = new JPanel(new BorderLayout());
+	private JTable tabelaContatos ;
+	private JTextField txtPesquisar;
+	private JButton btnVisualizar;
+	private JButton btnPesquisar;
 		
 		public AgendaBoundary() {
 			//JLabel logo = new JLabel();
@@ -73,32 +73,55 @@ public class AgendaBoundary implements ActionListener{
 			panelCentro.setBackground(Color.WHITE);
 			JScrollPane ScroolPaneContatos = new JScrollPane();
 			
+			panelCentro.add(ScroolPaneContatos);
 			
+			tabelaContatos= new JTable();
 			
-			
+			DefaultTableModel modelo = new DefaultTableModel(new Object[][]{},new String[] {
+					"ID","Empresa", "Nome / Contato", "Telefone", "Celular"
+				} );
+			ScroolPaneContatos.setViewportView(tabelaContatos);
 			tabelaContatos.setModel(new DefaultTableModel(
 				new Object[][] {
 				},
 				new String[] {
-					"Empresa", "Nome / Contato", "Telefone", "Celular"
+					"ID","Empresa", "Nome / Contato", "Telefone", "Celular"
+				}) {
+
+				/**
+				* 
+				*/
+				private static final long serialVersionUID = 1L;
+				boolean[] canEdit = new boolean[] { false, false, false, false, false };
+
+				@Override
+				public boolean isCellEditable(int rowIndex, int columnIndex) {
+					return canEdit[columnIndex];
 				}
-			));
-			tabelaContatos.getColumnModel().getColumn(0).setPreferredWidth(256);
-			tabelaContatos.getColumnModel().getColumn(1).setPreferredWidth(196);
-			tabelaContatos.getColumnModel().getColumn(2).setPreferredWidth(199);
-			tabelaContatos.getColumnModel().getColumn(3).setPreferredWidth(199);
-			tabelaContatos.setFont(new Font("Palatino Linotype", Font.PLAIN, 16));
+			}
+	
+			);
+			
+
+			tabelaContatos.getColumnModel().getColumn(0).setPreferredWidth(40);
+			tabelaContatos.getColumnModel().getColumn(1).setPreferredWidth(236);
+			tabelaContatos.getColumnModel().getColumn(2).setPreferredWidth(196);
+			tabelaContatos.getColumnModel().getColumn(3).setPreferredWidth(250);
+			tabelaContatos.getColumnModel().getColumn(4).setPreferredWidth(150);
+			tabelaContatos.setFont(new Font("Tahoma", Font.PLAIN, 12));
+			tabelaContatos.revalidate();
 			tabelaContatos.setBorder(null);
 			tabelaContatos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			
 			
 			
-			ScroolPaneContatos.setViewportView(tabelaContatos);
-			
-			panelCentro.add(ScroolPaneContatos);
 			
 			
 			
+			
+
+			control = new AgendaController(tabelaContatos);
+			control.listarContatos();
 			
 			
 			return panelCentro;
@@ -115,6 +138,7 @@ public class AgendaBoundary implements ActionListener{
 			
 			panelRodape.add(pesquisar);
 			txtPesquisar =  new JTextField(30);
+			txtPesquisar.addActionListener(this);
 			panelRodape.add(txtPesquisar);
 			
 			btnPesquisar = new JButton("Pesquisar");
@@ -123,8 +147,7 @@ public class AgendaBoundary implements ActionListener{
 			btnVisualizar = new JButton("Visualizar contato");
 			panelRodape.add(btnVisualizar);
 			btnVisualizar.setEnabled(false);
-			control = new AgendaController();
-			control.ConsultaTodos();		
+					
 			
 			return panelRodape;
 			
@@ -140,11 +163,11 @@ public static void main(String[] args) {
 
 @Override
 public void actionPerformed(ActionEvent e) {
-if(e.getSource() == btnPesquisar){
+if(e.getSource() == btnPesquisar || e.getSource() == txtPesquisar){
 	
 	
 	
-	control.ConsultaPorNome(txtPesquisar.getText());
+	control.ConsultaNome(txtPesquisar.getText());
 }
 	
 }
