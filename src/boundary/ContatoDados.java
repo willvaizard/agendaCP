@@ -122,32 +122,32 @@ public class ContatoDados implements ActionListener{
 		
 		JLabel lblEnd = new JLabel("End:");
 		lblEnd.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblEnd.setBounds(28, 108, 46, 14);
+		lblEnd.setBounds(28, 108, 73, 14);
 		panelCentro.add(lblEnd);
 		
 		JLabel lblTel = new JLabel("Tel:");
 		lblTel.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblTel.setBounds(28, 133, 46, 14);
+		lblTel.setBounds(28, 133, 73, 14);
 		panelCentro.add(lblTel);
 		
 		JLabel lblCel = new JLabel("Cel:");
 		lblCel.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblCel.setBounds(28, 158, 46, 14);
+		lblCel.setBounds(28, 158, 73, 14);
 		panelCentro.add(lblCel);
 		
 		JLabel lblUf = new JLabel("UF:");
 		lblUf.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblUf.setBounds(28, 183, 46, 14);
+		lblUf.setBounds(28, 183, 73, 14);
 		panelCentro.add(lblUf);
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblEmail.setBounds(28, 208, 46, 14);
+		lblEmail.setBounds(28, 208, 73, 14);
 		panelCentro.add(lblEmail);
 		
 		JLabel lblFax = new JLabel("Fax:");
 		lblFax.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblFax.setBounds(601, 108, 46, 14);
+		lblFax.setBounds(601, 106, 46, 14);
 		panelCentro.add(lblFax);
 		
 		JLabel lblCidade = new JLabel("Cidade:");
@@ -157,12 +157,12 @@ public class ContatoDados implements ActionListener{
 		
 		JLabel lblCep = new JLabel("Cep:");
 		lblCep.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblCep.setBounds(601, 158, 46, 14);
+		lblCep.setBounds(601, 161, 46, 14);
 		panelCentro.add(lblCep);
 		
 		JLabel lblDadosComerciais = new JLabel("Dados Comerciais:");
 		lblDadosComerciais.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDadosComerciais.setBounds(28, 233, 106, 14);
+		lblDadosComerciais.setBounds(28, 233, 173, 14);
 		panelCentro.add(lblDadosComerciais);
 		
 		JLabel lblEmpresa = new JLabel(" Empresa:");
@@ -170,19 +170,19 @@ public class ContatoDados implements ActionListener{
 		panelCentro.add(lblEmpresa);
 		
 		JLabel lblEnd_1 = new JLabel(" End:");
-		lblEnd_1.setBounds(28, 296, 46, 14);
+		lblEnd_1.setBounds(28, 296, 73, 14);
 		panelCentro.add(lblEnd_1);
 		
 		JLabel lblTel_1 = new JLabel("Tel:");
-		lblTel_1.setBounds(28, 323, 46, 14);
+		lblTel_1.setBounds(28, 323, 62, 14);
 		panelCentro.add(lblTel_1);
 		
 		JLabel lblPager = new JLabel("Pager:");
-		lblPager.setBounds(28, 355, 46, 14);
+		lblPager.setBounds(28, 355, 73, 14);
 		panelCentro.add(lblPager);
 		
 		JLabel lblCargo = new JLabel("Cargo: ");
-		lblCargo.setBounds(28, 392, 46, 14);
+		lblCargo.setBounds(28, 392, 73, 14);
 		panelCentro.add(lblCargo);
 		
 		JLabel lblCidade_1 = new JLabel("Cidade:");
@@ -198,11 +198,11 @@ public class ContatoDados implements ActionListener{
 		panelCentro.add(lblSite);
 		
 		JLabel lblDepartamento = new JLabel("Departamento: ");
-		lblDepartamento.setBounds(600, 373, 91, 14);
+		lblDepartamento.setBounds(600, 370, 91, 14);
 		panelCentro.add(lblDepartamento);
 		
 		JLabel lblCep_1 = new JLabel("Cep:");
-		lblCep_1.setBounds(600, 408, 46, 14);
+		lblCep_1.setBounds(600, 405, 46, 14);
 		panelCentro.add(lblCep_1);
 		
 		JLabel lblObservaes = new JLabel("Observa\u00E7\u00F5es");
@@ -286,31 +286,31 @@ public class ContatoDados implements ActionListener{
 		txtFax.setText(ag.getFax_res());
 		
 		txtCidade = new JTextField();
-		txtCidade.setBounds(660, 128, 274, 20);
+		txtCidade.setBounds(660, 130, 274, 20);
 		panelCentro.add(txtCidade);
 		txtCidade.setColumns(10);
 		txtCidade.setText(ag.getCidade_res());
 		
 		txtCep = new JTextField();
-		txtCep.setBounds(653, 153, 281, 20);
+		txtCep.setBounds(653, 158, 281, 20);
 		panelCentro.add(txtCep);
 		txtCep.setColumns(10);
 		txtCep.setText(ag.getCep_comercial());
 		
 		txtCidadeEmpresa = new JTextField();
-		txtCidadeEmpresa.setBounds(663, 287, 271, 20);
+		txtCidadeEmpresa.setBounds(663, 290, 271, 20);
 		panelCentro.add(txtCidadeEmpresa);
 		txtCidadeEmpresa.setColumns(10);
 		txtCidadeEmpresa.setText(ag.getCidade_comercial());
 		
 		txtFaxEmpresa = new JTextField();
-		txtFaxEmpresa.setBounds(660, 249, 274, 20);
+		txtFaxEmpresa.setBounds(660, 252, 274, 20);
 		panelCentro.add(txtFaxEmpresa);
 		txtFaxEmpresa.setColumns(10);
 		txtFaxEmpresa.setText(ag.getFax_comercial());
 		
 		txtSite = new JTextField();
-		txtSite.setBounds(650, 327, 284, 20);
+		txtSite.setBounds(650, 330, 284, 20);
 		panelCentro.add(txtSite);
 		txtSite.setColumns(10);
 		txtSite.setText(ag.getSite());
@@ -340,6 +340,8 @@ public class ContatoDados implements ActionListener{
 		
 		
 		
+		
+		
 	
 		
 
@@ -351,12 +353,4 @@ public class ContatoDados implements ActionListener{
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-
-
-
-
-
-
 }

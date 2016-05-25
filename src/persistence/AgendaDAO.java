@@ -47,7 +47,7 @@ String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencia
 			ag.setCel(rs.getString("cel"));
 			ag.setSite(rs.getString("site"));
 			ag.setEnd_comercial(rs.getString("end_comercial"));
-			ag.setCidade_comercial("cidade_comercial");
+			ag.setCidade_comercial(rs.getString("cidade_comercial"));
 			ag.setCep_comercial(rs.getString("cep_comercial"));
 			ag.setCep_comercial2(rs.getString("cep_comercial2"));
 			ag.setSite_comercial(rs.getString("site_comercial"));
@@ -77,7 +77,9 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 		String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencial, cidade_res, "
 				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial, cidade_comercial, cep_comercial,"
 				+ " + cep_comercial2, site_comercial, tel_comercial, fax_comercial,  empresa, cargo, "
-				+ "departamento, end_comercial2, obs, id_contato from agenda where nome like '%"+texto+"%' or nome2 like '%"+texto+"%' or empresa like '%"+texto+"%'";
+				+ "departamento, end_comercial2, obs, id_contato from agenda where nome like "
+				+ "'%"+texto+"%' or nome2 like '%"+texto+"%' or empresa like '%"+texto+"%' "
+						+ "ORDER BY nome2,nomeEmpCont";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		
@@ -100,7 +102,7 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 			ag.setCel(rs.getString("cel"));
 			ag.setSite(rs.getString("site"));
 			ag.setEnd_comercial(rs.getString("end_comercial"));
-			ag.setCidade_comercial("cidade_comercial");
+			ag.setCidade_comercial(rs.getString("cidade_comercial"));
 			ag.setCep_comercial(rs.getString("cep_comercial"));
 			ag.setCep_comercial2(rs.getString("cep_comercial2"));
 			ag.setSite_comercial(rs.getString("site_comercial"));
@@ -154,7 +156,7 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 			contato.setCel(rs.getString("cel"));
 			contato.setSite(rs.getString("site"));
 			contato.setEnd_comercial(rs.getString("end_comercial"));
-			contato.setCidade_comercial("cidade_comercial");
+			contato.setCidade_comercial(rs.getString("cidade_comercial"));
 			contato.setCep_comercial(rs.getString("cep_comercial"));
 			contato.setCep_comercial2(rs.getString("cep_comercial2"));
 			contato.setSite_comercial(rs.getString("site_comercial"));
