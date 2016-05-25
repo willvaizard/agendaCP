@@ -179,6 +179,8 @@ if(e.getSource() == btnPesquisar || e.getSource() == txtPesquisar){
 	control.ConsultaNome(txtPesquisar.getText());
 }else if (e.getSource() == btnVisualizar){
 	ContatoDados cDados = new ContatoDados(control.VisualizaContato(id));
+	tabelaContatos.clearSelection();
+	btnVisualizar.setEnabled(false);
 	
 }
 	

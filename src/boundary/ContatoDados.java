@@ -2,7 +2,10 @@ package boundary;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -25,8 +28,12 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
+
+import com.sun.org.apache.bcel.internal.generic.POP;
 
 import entity.Agenda;
 
@@ -40,17 +47,36 @@ public class ContatoDados implements ActionListener{
 
 	
 	private JDialog consultaCltDialog = new JDialog();
+	private JTextField txtEndereco;
+	private JTextField txtTelefone;
+	private JTextField txtCel;
+	private JTextField txtUf;
+	private JTextField txtEmail;
+	private JTextField txtEmpresa;
+	private JTextField txtEnderecoEmpresa;
+	private JTextField txtTelefoneEmpresa;
+	private JTextField txtPager;
+	private JTextField txtCargo;
+	private JTextField txtFax;
+	private JTextField txtCidade;
+	private JTextField txtCep;
+	private JTextField txtCidadeEmpresa;
+	private JTextField txtFaxEmpresa;
+	private JTextField txtSite;
+	private JTextField txtDepartamento;
+	private JTextField txtCepEmpresa;
 
 	public ContatoDados(Agenda ag) {
+		
+		
 
-		panelPrincipal.add(Centro(), BorderLayout.CENTER);
+		panelPrincipal.add(Centro(ag), BorderLayout.CENTER);
 
 		consultaCltDialog.setModal(true);
 		consultaCltDialog.setLocationRelativeTo(null);
 		consultaCltDialog.setResizable(false);
 		consultaCltDialog.setContentPane(panelPrincipal);
-		consultaCltDialog.setSize(1020, 600);
-		consultaCltDialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		consultaCltDialog.setSize(950, 600);
 		consultaCltDialog.setLocationRelativeTo(null);
 		consultaCltDialog.setVisible(true);
 		
@@ -63,12 +89,7 @@ public class ContatoDados implements ActionListener{
 
 	}
 	
-	public void PopulaDados (Agenda ag){
-		
 
-		this.txtNomeContato.setText(ag.getNomeEmpresa());
-		this.txtObs.setText("AA");
-	}
 
 	public JPanel getPanelPrincipal() {
 		return panelPrincipal;
@@ -78,7 +99,7 @@ public class ContatoDados implements ActionListener{
 		this.panelPrincipal = panelPrincipal;
 	}
 
-	public JComponent Centro() {
+	public JComponent Centro(Agenda ag) {
 		JPanel panelCentro = new JPanel();
 		panelCentro.setLayout(null);
 		panelCentro.setBackground(Color.WHITE);
@@ -92,11 +113,7 @@ public class ContatoDados implements ActionListener{
 		lblNomeContato.setBounds(28, 58, 122, 14);
 		panelCentro.add(lblNomeContato);
 		
-		txtNomeContato = new JTextField();
-		txtNomeContato.setFont(new Font("Dialog", Font.PLAIN, 11));
-		txtNomeContato.setBounds(171, 55, 538, 20);
-		panelCentro.add(txtNomeContato);
-		txtNomeContato.setColumns(10);
+		
 		
 		JLabel lblDadosPessoais = new JLabel("Dados Pessoais:");
 		lblDadosPessoais.setFont(new Font("Dialog", Font.BOLD, 11));
@@ -153,27 +170,27 @@ public class ContatoDados implements ActionListener{
 		panelCentro.add(lblEmpresa);
 		
 		JLabel lblEnd_1 = new JLabel(" End:");
-		lblEnd_1.setBounds(28, 283, 46, 14);
+		lblEnd_1.setBounds(28, 296, 46, 14);
 		panelCentro.add(lblEnd_1);
 		
 		JLabel lblTel_1 = new JLabel("Tel:");
-		lblTel_1.setBounds(28, 308, 46, 14);
+		lblTel_1.setBounds(28, 323, 46, 14);
 		panelCentro.add(lblTel_1);
 		
 		JLabel lblPager = new JLabel("Pager:");
-		lblPager.setBounds(28, 333, 46, 14);
+		lblPager.setBounds(28, 355, 46, 14);
 		panelCentro.add(lblPager);
 		
 		JLabel lblCargo = new JLabel("Cargo: ");
-		lblCargo.setBounds(28, 358, 46, 14);
+		lblCargo.setBounds(28, 392, 46, 14);
 		panelCentro.add(lblCargo);
 		
 		JLabel lblCidade_1 = new JLabel("Cidade:");
-		lblCidade_1.setBounds(600, 258, 46, 14);
+		lblCidade_1.setBounds(601, 293, 46, 14);
 		panelCentro.add(lblCidade_1);
 		
 		JLabel lblFax_1 = new JLabel("Fax:");
-		lblFax_1.setBounds(600, 296, 46, 14);
+		lblFax_1.setBounds(600, 255, 46, 14);
 		panelCentro.add(lblFax_1);
 		
 		JLabel lblSite = new JLabel("Site:");
@@ -189,12 +206,139 @@ public class ContatoDados implements ActionListener{
 		panelCentro.add(lblCep_1);
 		
 		JLabel lblObservaes = new JLabel("Observa\u00E7\u00F5es");
-		lblObservaes.setBounds(28, 408, 91, 14);
+		lblObservaes.setBounds(28, 427, 91, 14);
 		panelCentro.add(lblObservaes);
 		
+		txtNomeContato = new JTextField();
+		txtNomeContato.setFont(new Font("Dialog", Font.PLAIN, 11));
+		txtNomeContato.setBounds(120, 55, 793, 20);
+		panelCentro.add(txtNomeContato);
+		txtNomeContato.setColumns(10);
+		txtNomeContato.setText(ag.getNomeEmpresaContato());
+	
+		
+		txtEndereco = new JTextField();
+		txtEndereco.setBounds(84, 106, 499, 20);
+		panelCentro.add(txtEndereco);
+		txtEndereco.setColumns(10);
+		txtEndereco.setText(ag.getEnd_comercial());
+		
+		txtTelefone = new JTextField();
+		txtTelefone.setBounds(84, 133, 499, 20);
+		panelCentro.add(txtTelefone);
+		txtTelefone.setColumns(10);
+		txtTelefone.setText(ag.getTel_res());
+		
+		txtCel = new JTextField();
+		txtCel.setBounds(84, 158, 499, 20);
+		panelCentro.add(txtCel);
+		txtCel.setColumns(10);
+		txtCel.setText(ag.getCel());
+		
+		txtUf = new JTextField();
+		txtUf.setBounds(84, 183, 289, 20);
+		panelCentro.add(txtUf);
+		txtUf.setColumns(10);
+		txtUf.setText(ag.getUf());
+		
+		txtEmail = new JTextField();
+		txtEmail.setBounds(84, 208, 499, 20);
+		panelCentro.add(txtEmail);
+		txtEmail.setColumns(10);
+		txtEmail.setText(ag.getMail());
+		
+		txtEmpresa = new JTextField();
+		txtEmpresa.setBounds(94, 255, 489, 20);
+		panelCentro.add(txtEmpresa);
+		txtEmpresa.setColumns(10);
+		txtEmpresa.setText(ag.getNomeEmpresa());
+		
+		txtEnderecoEmpresa = new JTextField();
+		txtEnderecoEmpresa.setBounds(84, 293, 499, 20);
+		panelCentro.add(txtEnderecoEmpresa);
+		txtEnderecoEmpresa.setColumns(10);
+		txtEnderecoEmpresa.setText(ag.getEnd_comercial2());
+		
+		txtTelefoneEmpresa = new JTextField();
+		txtTelefoneEmpresa.setBounds(84, 321, 499, 20);
+		panelCentro.add(txtTelefoneEmpresa);
+		txtTelefoneEmpresa.setColumns(10);
+		txtTelefoneEmpresa.setText(ag.getTel_comercial());
+		
+		
+		txtPager = new JTextField();
+		txtPager.setBounds(84, 352, 499, 20);
+		panelCentro.add(txtPager);
+		txtPager.setColumns(10);
+		txtPager.setText(ag.getPager());
+		
+		
+		txtCargo = new JTextField();
+		txtCargo.setBounds(84, 389, 499, 20);
+		panelCentro.add(txtCargo);
+		txtCargo.setColumns(10);
+		txtCargo.setText(ag.getCargo());
+		
+		txtFax = new JTextField();
+		txtFax.setBounds(650, 103, 284, 20);
+		panelCentro.add(txtFax);
+		txtFax.setColumns(10);
+		txtFax.setText(ag.getFax_res());
+		
+		txtCidade = new JTextField();
+		txtCidade.setBounds(660, 128, 274, 20);
+		panelCentro.add(txtCidade);
+		txtCidade.setColumns(10);
+		txtCidade.setText(ag.getCidade_res());
+		
+		txtCep = new JTextField();
+		txtCep.setBounds(653, 153, 281, 20);
+		panelCentro.add(txtCep);
+		txtCep.setColumns(10);
+		txtCep.setText(ag.getCep_comercial());
+		
+		txtCidadeEmpresa = new JTextField();
+		txtCidadeEmpresa.setBounds(663, 287, 271, 20);
+		panelCentro.add(txtCidadeEmpresa);
+		txtCidadeEmpresa.setColumns(10);
+		txtCidadeEmpresa.setText(ag.getCidade_comercial());
+		
+		txtFaxEmpresa = new JTextField();
+		txtFaxEmpresa.setBounds(660, 249, 274, 20);
+		panelCentro.add(txtFaxEmpresa);
+		txtFaxEmpresa.setColumns(10);
+		txtFaxEmpresa.setText(ag.getFax_comercial());
+		
+		txtSite = new JTextField();
+		txtSite.setBounds(650, 327, 284, 20);
+		panelCentro.add(txtSite);
+		txtSite.setColumns(10);
+		txtSite.setText(ag.getSite());
+
+		
+		txtDepartamento = new JTextField();
+		txtDepartamento.setBounds(704, 367, 230, 20);
+		panelCentro.add(txtDepartamento);
+		txtDepartamento.setColumns(10);
+		txtDepartamento.setText(ag.getDepartamento());
+		
+		txtCepEmpresa = new JTextField();
+		txtCepEmpresa.setBounds(650, 402, 284, 20);
+		panelCentro.add(txtCepEmpresa);
+		txtCepEmpresa.setColumns(10);
+		txtCepEmpresa.setText(ag.getCep_comercial2()+" - "+ ag.getCep_comercial());
+		
 		txtObs = new JTextArea();
-		txtObs.setBounds(28, 433, 753, 104);
+		txtObs.setBounds(28, 452, 753, 104);
+		txtObs.setLineWrap(true);
 		panelCentro.add(txtObs);
+		txtObs.setText(ag.getObs());
+		
+		
+		
+		
+		
+		
 		
 	
 		

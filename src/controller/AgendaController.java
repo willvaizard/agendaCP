@@ -18,27 +18,7 @@ public class AgendaController  {
 	public AgendaController(JTable tabelaContatos) {
 	this.tabelaContatos = tabelaContatos;
 	}
-	public void ConsultaTodos (){
-		
-		try {
-			AgendaDAO aDao = new AgendaDAO();
-			List<Agenda> lista = aDao.ConsultaTodos();
-			
-			for (Agenda ag:  lista){
-				
-				
-				
-				
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-	}
+	
 
 
 	
@@ -120,7 +100,7 @@ public class AgendaController  {
 			
 			AgendaDAO aDao = new AgendaDAO();
 			 contato = aDao.ConsultaPorID(id);
-			System.out.println(contato.getTel_comercial());
+			
 			
 			
 		} catch (SQLException e) {
