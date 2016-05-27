@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -28,8 +29,10 @@ import javax.swing.plaf.metal.MetalBorders.TableHeaderBorder;
 import javax.swing.table.DefaultTableModel;
 
 import com.sun.javafx.fxml.BeanAdapter;
+import java.awt.Toolkit;
 
 import controller.AgendaController;
+import sun.awt.image.ToolkitImage;
 
 public class AgendaBoundary implements ActionListener, MouseListener{
 	private AgendaController control;
@@ -45,7 +48,7 @@ public class AgendaBoundary implements ActionListener, MouseListener{
 			//JLabel logo = new JLabel();
 			
 			
-			
+			janela.setIconImage(Toolkit.getDefaultToolkit().getImage(AgendaBoundary.class.getResource("/resources/agenda.png")));
 			JLabel titulo = new JLabel("Agenda de Contatos", SwingConstants.CENTER);
 			titulo.setIcon(new ImageIcon(AgendaBoundary.class.getResource("/resources/logocp.jpg")));
 			titulo.setHorizontalTextPosition( SwingConstants.CENTER );
@@ -56,14 +59,15 @@ public class AgendaBoundary implements ActionListener, MouseListener{
 			
 			
 			
-			//titulo.setHorizontalAlignment(JLabel.CENTER);
+
 			
 			panelPrincipal.add(titulo, BorderLayout.NORTH);
 			panelPrincipal.add(centroTabela(), BorderLayout.CENTER);
 			panelPrincipal.add(rodape(), BorderLayout.SOUTH);
 			
 			janela.setVisible(true);
-			janela.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			
+			
 			janela.setSize(900, 600);
 			janela.setContentPane(panelPrincipal);
 			janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,10 +145,10 @@ public class AgendaBoundary implements ActionListener, MouseListener{
 		}
 		public JComponent rodape(){
 			JPanel panelRodape = new JPanel();
-			JLabel pesquisar = new JLabel("Pesquisar: ");
-			pesquisar.setFont(new Font("Palatino Linotype", Font.BOLD, 16));
 			
-			panelRodape.add(pesquisar);
+			
+			
+			
 			txtPesquisar =  new JTextField(30);
 			txtPesquisar.addActionListener(this);
 			panelRodape.add(txtPesquisar);
@@ -156,6 +160,8 @@ public class AgendaBoundary implements ActionListener, MouseListener{
 			panelRodape.add(btnVisualizar);
 			btnVisualizar.setEnabled(false);
 			btnVisualizar.addActionListener(this);
+			
+			panelRodape.setBackground(Color.LIGHT_GRAY);
 					
 			
 			return panelRodape;
@@ -193,6 +199,12 @@ public void mouseClicked(MouseEvent arg0) {
 		int linha = tabelaContatos.getSelectedRow();
 		btnVisualizar.setEnabled(true);
 		 id = (int) tabelaContatos.getValueAt(linha, 0); 
+		
+	}
+	if(arg0.getClickCount() == 2) {
+		ContatoDados cDados = new ContatoDados(control.VisualizaContato(id));
+		tabelaContatos.clearSelection();
+		btnVisualizar.setEnabled(false);
 		
 	}
 	

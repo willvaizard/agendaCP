@@ -5,6 +5,8 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 public class JDBCUtil {
 
 	private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
@@ -14,9 +16,9 @@ public class JDBCUtil {
 	private static String JDBC_PASSWORD = "recepcao";
 	
 	
-	//private static String JDBC_URL = "jdbc:mysql://localhost/agenda";
-//	private static String JDBC_USER = "root";
-	//private static String JDBC_PASSWORD = "ads2016";
+	//private static String JDBC_URL = "jdbc:mysql://localhost/bureau";
+	//private static String JDBC_USER = "root";
+	//private static String JDBC_PASSWORD = "rainbow";
 
 	
 	
@@ -31,8 +33,8 @@ public class JDBCUtil {
 				driver = (Driver) jdbcDriverClass.newInstance();
 				DriverManager.registerDriver(driver);
 			} catch (Exception e) {
-				System.out.println("Failed to initialise JDBC driver");
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO AO CONECTAR AO BANCO DE DADOS", JOptionPane.ERROR_MESSAGE);
+				
 			}
 		}
 		return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD);

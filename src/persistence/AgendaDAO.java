@@ -73,6 +73,7 @@ String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencia
 public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 	
 		String texto = textoDigitado.toUpperCase();
+		
 		List<Agenda> listaContatos = new ArrayList<Agenda>();
 		String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencial, cidade_res, "
 				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial, cidade_comercial, cep_comercial,"
