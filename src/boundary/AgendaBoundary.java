@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
@@ -34,7 +36,7 @@ import java.awt.Toolkit;
 import controller.AgendaController;
 import sun.awt.image.ToolkitImage;
 
-public class AgendaBoundary implements ActionListener, MouseListener{
+public class AgendaBoundary implements ActionListener, MouseListener, KeyListener{
 	private AgendaController control;
 	private JFrame janela = new JFrame("Consulta de Contatos - Camera Press");
 	private JPanel panelPrincipal = new JPanel(new BorderLayout());
@@ -150,7 +152,7 @@ public class AgendaBoundary implements ActionListener, MouseListener{
 			
 			
 			txtPesquisar =  new JTextField(30);
-			txtPesquisar.addActionListener(this);
+			txtPesquisar.addKeyListener(this);
 			panelRodape.add(txtPesquisar);
 			
 			btnPesquisar = new JButton("Pesquisar");
@@ -231,6 +233,24 @@ public void mousePressed(MouseEvent arg0) {
 @Override
 public void mouseReleased(MouseEvent arg0) {
 	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void keyPressed(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void keyReleased(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void keyTyped(KeyEvent e) {
+	control.ConsultaNome(txtPesquisar.getText());
 	
 }
 }

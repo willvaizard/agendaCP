@@ -24,8 +24,8 @@ public class AgendaDAO implements iAgendaDAO{
 		
 		List<Agenda> listaContatos = new ArrayList<Agenda>();
 
-String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencial, cidade_res, "
-		+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial, cidade_comercial, cep_comercial,"
+String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, cidade_res, "
+		+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial +'-'+ residencial as endereco , cidade_comercial, cep_comercial,"
 		+ " + cep_comercial2, site_comercial, tel_comercial, fax_comercial,  empresa, cargo, "
 		+ "departamento, end_comercial2, obs, id_contato from agenda";
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -38,7 +38,7 @@ String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencia
 			ag.setNomeEmpresa(rs.getString("nome"));
 			ag.setNomeEmpresaContato(rs.getString("nomeEmpCont"));
 			ag.setMail(rs.getString("mail"));
-			ag.setResidencial(rs.getString("residencial"));
+			//ag.setResidencial(rs.getString("residencial"));
 			ag.setCidade_res(rs.getString("cidade_res"));
 			ag.setCep_res(rs.getString("cep_res"));
 			ag.setUf(rs.getString("uf"));
@@ -46,7 +46,7 @@ String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencia
 			ag.setFax_res(rs.getString("fax_res"));
 			ag.setCel(rs.getString("cel"));
 			ag.setSite(rs.getString("site"));
-			ag.setEnd_comercial(rs.getString("end_comercial"));
+			ag.setEnd_comercial(rs.getString("endereco"));
 			ag.setCidade_comercial(rs.getString("cidade_comercial"));
 			ag.setCep_comercial(rs.getString("cep_comercial"));
 			ag.setCep_comercial2(rs.getString("cep_comercial2"));
@@ -76,7 +76,7 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 		
 		List<Agenda> listaContatos = new ArrayList<Agenda>();
 		String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencial, cidade_res, "
-				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial, cidade_comercial, cep_comercial,"
+				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial +'-'+ residencial as endereco, cidade_comercial, cep_comercial,"
 				+ " + cep_comercial2, site_comercial, tel_comercial, fax_comercial,  empresa, cargo, "
 				+ "departamento, end_comercial2, obs, id_contato from agenda where nome like "
 				+ "'%"+texto+"%' or nome2 like '%"+texto+"%' or empresa like '%"+texto+"%' "
@@ -102,7 +102,7 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 			ag.setFax_res(rs.getString("fax_res"));
 			ag.setCel(rs.getString("cel"));
 			ag.setSite(rs.getString("site"));
-			ag.setEnd_comercial(rs.getString("end_comercial"));
+			ag.setEnd_comercial(rs.getString("endereco"));
 			ag.setCidade_comercial(rs.getString("cidade_comercial"));
 			ag.setCep_comercial(rs.getString("cep_comercial"));
 			ag.setCep_comercial2(rs.getString("cep_comercial2"));
@@ -131,7 +131,7 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 		
 		
 		String sql = "SELECT nome, nome2+' / '+empresa  as nomeEmpCont, mail, residencial, cidade_res, "
-				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial, cidade_comercial, cep_comercial,"
+				+ "cep_res, uf, tel_res, fax_res, cel, site,end_comercial +' / '+ residencial as endereco, cidade_comercial, cep_comercial,"
 				+ " + cep_comercial2, site_comercial, tel_comercial, fax_comercial,  empresa, cargo, "
 				+ "departamento, end_comercial2, obs, id_contato from agenda where id_contato = ? ";
 		
@@ -156,7 +156,7 @@ public List<Agenda> ConsultaPorNome(String textoDigitado) throws SQLException {
 			contato.setFax_res(rs.getString("fax_res"));
 			contato.setCel(rs.getString("cel"));
 			contato.setSite(rs.getString("site"));
-			contato.setEnd_comercial(rs.getString("end_comercial"));
+			contato.setEnd_comercial(rs.getString("endereco"));
 			contato.setCidade_comercial(rs.getString("cidade_comercial"));
 			contato.setCep_comercial(rs.getString("cep_comercial"));
 			contato.setCep_comercial2(rs.getString("cep_comercial2"));

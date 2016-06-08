@@ -105,24 +105,24 @@ public class ContatoDados implements ActionListener{
 		panelCentro.setBackground(Color.WHITE);
 		JLabel lblVisualizandoContato = new JLabel("Visualizando Contato");
 		lblVisualizandoContato.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblVisualizandoContato.setBounds(332, 11, 173, 22);
+		lblVisualizandoContato.setBounds(332, 11, 359, 22);
 		panelCentro.add(lblVisualizandoContato);
 		
 		JLabel lblNomeContato = new JLabel("Nome Contato:");
 		lblNomeContato.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblNomeContato.setBounds(28, 58, 122, 14);
+		lblNomeContato.setBounds(28, 39, 122, 14);
 		panelCentro.add(lblNomeContato);
 		
 		
 		
 		JLabel lblDadosPessoais = new JLabel("Dados Pessoais:");
 		lblDadosPessoais.setFont(new Font("Dialog", Font.BOLD, 11));
-		lblDadosPessoais.setBounds(28, 83, 122, 14);
+		lblDadosPessoais.setBounds(28, 64, 122, 14);
 		panelCentro.add(lblDadosPessoais);
 		
 		JLabel lblEnd = new JLabel("End:");
 		lblEnd.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblEnd.setBounds(28, 108, 73, 14);
+		lblEnd.setBounds(28, 89, 73, 14);
 		panelCentro.add(lblEnd);
 		
 		JLabel lblTel = new JLabel("Tel:");
@@ -147,17 +147,17 @@ public class ContatoDados implements ActionListener{
 		
 		JLabel lblFax = new JLabel("Fax:");
 		lblFax.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblFax.setBounds(601, 106, 46, 14);
+		lblFax.setBounds(601, 136, 46, 14);
 		panelCentro.add(lblFax);
 		
 		JLabel lblCidade = new JLabel("Cidade:");
 		lblCidade.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblCidade.setBounds(601, 133, 62, 14);
+		lblCidade.setBounds(601, 163, 62, 14);
 		panelCentro.add(lblCidade);
 		
 		JLabel lblCep = new JLabel("Cep:");
 		lblCep.setFont(new Font("Dialog", Font.PLAIN, 11));
-		lblCep.setBounds(601, 161, 46, 14);
+		lblCep.setBounds(601, 191, 46, 14);
 		panelCentro.add(lblCep);
 		
 		JLabel lblDadosComerciais = new JLabel("Dados Comerciais:");
@@ -211,17 +211,19 @@ public class ContatoDados implements ActionListener{
 		
 		txtNomeContato = new JTextField();
 		txtNomeContato.setFont(new Font("Dialog", Font.PLAIN, 11));
-		txtNomeContato.setBounds(120, 55, 793, 20);
+		txtNomeContato.setBounds(120, 36, 793, 20);
 		panelCentro.add(txtNomeContato);
 		txtNomeContato.setColumns(10);
 		txtNomeContato.setText(ag.getNomeEmpresaContato());
 	
 		
 		txtEndereco = new JTextField();
-		txtEndereco.setBounds(84, 106, 499, 20);
+		txtEndereco.setBounds(84, 87, 850, 20);
 		panelCentro.add(txtEndereco);
 		txtEndereco.setColumns(10);
 		txtEndereco.setText(ag.getEnd_comercial());
+		
+		
 		
 		txtTelefone = new JTextField();
 		txtTelefone.setBounds(84, 133, 499, 20);
@@ -280,19 +282,19 @@ public class ContatoDados implements ActionListener{
 		txtCargo.setText(ag.getCargo());
 		
 		txtFax = new JTextField();
-		txtFax.setBounds(650, 103, 284, 20);
+		txtFax.setBounds(650, 133, 284, 20);
 		panelCentro.add(txtFax);
 		txtFax.setColumns(10);
 		txtFax.setText(ag.getFax_res());
 		
 		txtCidade = new JTextField();
-		txtCidade.setBounds(660, 130, 274, 20);
+		txtCidade.setBounds(660, 160, 274, 20);
 		panelCentro.add(txtCidade);
 		txtCidade.setColumns(10);
 		txtCidade.setText(ag.getCidade_res());
 		
 		txtCep = new JTextField();
-		txtCep.setBounds(653, 158, 281, 20);
+		txtCep.setBounds(653, 188, 281, 20);
 		panelCentro.add(txtCep);
 		txtCep.setColumns(10);
 		txtCep.setText(ag.getCep_comercial());
