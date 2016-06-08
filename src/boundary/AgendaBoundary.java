@@ -36,7 +36,7 @@ import java.awt.Toolkit;
 import controller.AgendaController;
 import sun.awt.image.ToolkitImage;
 
-public class AgendaBoundary implements ActionListener, MouseListener, KeyListener{
+public class AgendaBoundary implements ActionListener, MouseListener{
 	private AgendaController control;
 	private JFrame janela = new JFrame("Consulta de Contatos - Camera Press");
 	private JPanel panelPrincipal = new JPanel(new BorderLayout());
@@ -152,7 +152,7 @@ public class AgendaBoundary implements ActionListener, MouseListener, KeyListene
 			
 			
 			txtPesquisar =  new JTextField(30);
-			txtPesquisar.addKeyListener(this);
+			txtPesquisar.addActionListener(this);
 			panelRodape.add(txtPesquisar);
 			
 			btnPesquisar = new JButton("Pesquisar");
@@ -236,21 +236,4 @@ public void mouseReleased(MouseEvent arg0) {
 	
 }
 
-@Override
-public void keyPressed(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void keyReleased(KeyEvent e) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void keyTyped(KeyEvent e) {
-	control.ConsultaNome(txtPesquisar.getText());
-	
-}
 }
